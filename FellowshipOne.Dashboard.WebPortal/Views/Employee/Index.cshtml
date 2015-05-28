@@ -1,0 +1,230 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Employee";
+}
+
+<div>
+    <form id="divEmployeeDetail" class="form-horizontal"></form>
+</div>
+
+<div id="divEmployeeList"></div>
+
+
+@section scripts{
+    @*@Scripts.Render("~/bundles/jqueryval")*@
+    @Scripts.Render("~/Scripts/jquery.validate.js")
+
+    
+
+    <script type="text/javascript">
+        function addEventToDetail() {
+            $('#btnCreate').click(createEmpolyee);
+            $('#btnSave').click(saveEmpolyee);
+            $('#btnCancal').click(function () {
+                $('#txtCode').val('');
+                $('#txtName').val('');
+                $('#txtType').val('');
+                $('#txtAge').val('');
+                $('#btnCreate').show();
+                $('#btnSave').hide();
+                $('#btnCancal').hide();
+                $('#divEmployeeList > table > tbody > tr').removeClass('danger');
+            });
+
+            $('#divEmployeeDetail').validate({
+                errorPlacement: function (error, element) {
+                    element.addClass('input-validation-error');
+                },
+                errorContainer: "div#divMessage",
+                errorLabelContainer: $("#ulText"),
+                wrapper: "li",
+                rules: {
+                    Code: "required",
+                    Name: "required",
+                    Type: "required",
+                    Age: {
+                        required: true,
+                        number: true
+                    }
+                },
+                messages: {
+                    Code: "'Code' field is required",
+                    Name: "'Name' field is required",
+                    Type: "'Type' field is required",
+                    Age: {
+                        required: "'Age' field is required",
+                        number: "'Age' must be a number"
+                    }
+                }
+            });
+        }
+
+        function onUpdateClick(sysNo) {
+            $('#btnCreate').hide();
+            $('#btnSave').show();
+            $('#btnCancal').show();
+
+            $('#divEmployeeList > table > tbody > tr').removeClass('danger');
+            var tr = $('#tr_' + sysNo);
+            tr.addClass('danger')
+            var tdArray = tr.find('td');
+            $('#hidSysNo').val(sysNo);
+            $('#txtCode').val(tdArray[0].textContent);
+            $('#txtName').val(tdArray[1].textContent);
+            $('#txtType').val(tdArray[2].textContent);
+            $('#txtAge').val(tdArray[3].textContent);
+        }
+
+        function onDeleteClick(sysNo) {
+            if (confirm("Do you want to delete this employee information?") == false) return;
+            
+
+            $.ajax({
+                type: "POST",
+                url: "/Employee/Delete",
+                data: { 'sysNo': sysNo },
+                beforeSend: function () {
+                    //$('#divEmployeeList').html('<h1>Loading ...</h1>');
+                },
+                success: function (isSuccess) {
+                    if (isSuccess == 1) {
+                        $('#divEmployeeList > table > tbody > tr').removeClass('danger');
+                        $('#tr_' + sysNo).addClass('danger');
+                        $('#tr_' + sysNo).fadeOut('slow');
+                    }
+                },
+                error: function () {
+                    $('#divEmployeeList').html('<h1>Loading data failed.</h1>');
+                },
+                complete: function () { }
+            });
+        }
+
+        function loadEmployeeList(sysNo, type) {
+
+            $.ajax({
+                type: "GET",
+                url: "/Employee/RequestAll",
+                beforeSend: function () {
+                    $('#divEmployeeList').html('<h1>Loading ...</h1>');
+                },
+                success: function (html) {
+                    $('#divEmployeeList').html(html);
+
+                    //Update view item style.
+                    if (sysNo == null || type == null) return;
+                    switch (type) {
+                        case 'Create':
+                        case 'Update':
+                            $('#tr_' + sysNo).addClass('danger');
+                            break;
+                    }
+                },
+                error: function () {
+                    $('#divEmployeeList').html('<h1>Loading data failed.</h1>');
+                },
+                complete: function () { }
+            });
+
+        }
+
+        function loadEmployeeArea() {
+            $.ajax({
+                type: "GET",
+                url: "/Employee/Detail",
+                beforeSend: function () {
+                    $('#divEmployeeDetail').html('<h1>Loading ...</h1>');
+                },
+                success: function (html) {
+                    $('#divEmployeeDetail').html(html);
+                    addEventToDetail();
+                },
+                error: function () {
+                    $('#divEmployeeDetail').html('<h1>Loading data failed.</h1>');
+                },
+                complete: function () { }
+            });
+        }
+
+        $(function () {
+            //Load the employee list information.
+            loadEmployeeList();
+
+            //Load the employee edit view information.
+            loadEmployeeArea();
+        });
+
+        function createEmpolyee() {
+            if ($('#divEmployeeDetail').valid() == false) return;
+            var employeeData = {
+                Code: $('#txtCode').val(),
+                Name: $('#txtName').val(),
+                Type: $('#txtType').val(),
+                Age: Number($('#txtAge').val())
+            };
+
+            $.ajax({
+                type: "POST",
+                url: "/Employee/Create",
+                data: employeeData,
+                beforeSend: function () {
+                    //$('#divEmployeeDetail').html('<h1>Loading ...</h1>');
+                },
+                success: function (entity) {
+                    var employee = $.parseJSON(entity);
+                    loadEmployeeList(employee.SysNo, "Create");
+                    //Clean input.
+                    $('#txtCode').val('');
+                    $('#txtName').val('');
+                    $('#txtType').val('');
+                    $('#txtAge').val('');
+                },
+                error: function () {
+                    //Show Error message.
+                    //$('#divEmployeeDetail').html('<h1>Loading data failed.</h1>');
+                },
+                complete: function () { }
+            });
+
+        }
+
+        function saveEmpolyee() {
+            if ($('#divEmployeeDetail').valid() == false) return;
+            var employeeData = {
+                SysNo: Number($('#hidSysNo').val()),
+                Code: $('#txtCode').val(),
+                Name: $('#txtName').val(),
+                Type: $('#txtType').val(),
+                Age: Number($('#txtAge').val())
+            };
+
+            $.ajax({
+                type: "POST",
+                url: "/Employee/Update",
+                data: employeeData,
+                beforeSend: function () {
+                    //$('#divEmployeeDetail').html('<h1>Loading ...</h1>');
+                },
+                success: function (entity) {
+                    var employee = $.parseJSON(entity);
+                    loadEmployeeList(employee.SysNo, "Update");
+                    //Clean input.
+                    $('#btnCreate').show();
+                    $('#btnSave').hide();
+                    $('#btnCancal').hide();
+                    $('#txtCode').val('');
+                    $('#txtName').val('');
+                    $('#txtType').val('');
+                    $('#txtAge').val('');
+                },
+                error: function () {
+                    //Show Error message.
+                    //$('#divEmployeeDetail').html('<h1>Loading data failed.</h1>');
+                },
+                complete: function () { }
+            });
+
+        }
+
+    </script>
+}

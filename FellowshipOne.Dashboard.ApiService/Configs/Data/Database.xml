@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<DBGroups>
+  <Database DataSourceID="NorthCenterDB" DatabaseType="MS SQL Service">
+    <ConnectionString>
+      <![CDATA[Server=127.0.0.1\NorthCenterDB;Database=NorthDB;User ID=sa;Password=North@123;]]>
+    </ConnectionString>  
+  </Database>
+
+  <Database DataSourceID="PortalDB" DatabaseType="MySQL">
+    <ConnectionString>
+      <![CDATA[Server=124.127.48.34;Database=QYPO;User=root;Password=qianyu@123;Charset=utf8;]]>
+    </ConnectionString>
+  </Database>
+</DBGroups>

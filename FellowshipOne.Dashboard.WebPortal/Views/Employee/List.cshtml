@@ -1,0 +1,39 @@
+﻿@{
+    Layout = string.Empty;
+    var emloyees = ViewBag.Employees as List<Dashboard.DataService.Models.Employee>;
+}
+
+
+<h2>Employee List.</h2>
+<h4>Show all employee information.</h4>
+<hr>
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr class="active">
+            <th>Code</th>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Age</th>
+            <th>CreateTime</th>
+            <th>UpdateTime</th>
+            <th style="width:130px;">Operation</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var emp in emloyees)
+        {
+            <tr id="tr_@emp.SysNo">
+                <td>@emp.Code</td>
+                <td>@emp.Name</td>
+                <td>@emp.Type</td>
+                <td>@emp.Age</td>
+                <td>@emp.CreateTime.ToString("yyyy-MM-dd hh:mm")</td>
+                <td>@emp.UpdateTime.ToString("yyyy-MM-dd hh:mm")</td>
+                <td>
+                    <input type="button" class="btn btn-primary btn-xs" onclick="onUpdateClick(@emp.SysNo)" value="Update" />
+                    <input type="button" class="btn btn-danger btn-xs" onclick="onDeleteClick(@emp.SysNo)" value="Delete" />
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

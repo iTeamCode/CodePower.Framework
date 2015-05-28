@@ -1,0 +1,109 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<DataOperators xmlns="https:\\North\Framework\DataOperators">
+  <DataCommand Name="QueryPurchaseOrderByConditions" DataSourceID="NorthCenterDB" Type ="TextCommand">
+    <CommandText>
+      <![CDATA[
+        SELECT * FROM(
+          SELECT 
+            po.SysNo,
+            customer.CustomerID as BuyerName,
+            po.VendorSysNo,
+            vendor.VendorName,
+            po.ProductSysNo, 
+            product.ProductName,
+            po.BuyerDescription,
+            po.BuyerContacts,
+            po.Status
+          FROM QYPO.PurchaseOrder po 
+          INNER JOIN QYPO.Vendor vendor
+            ON vendor.SysNo = po.VendorSysNo
+          INNER JOIN QYCMS.Product product
+            ON product.SysNo = po.ProductSysNo
+          INNER JOIN QYCustomer.CustomerBasic customer
+            ON customer.SysNo = po.BuyerSysNo
+          WHERE po.BuyerSysNo = @CustomerSysNo
+            AND po.CompanyCode = @CompanyCode
+          #WhereStr#
+          ORDER BY 1 DESC
+        ) AS QueryResult LIMIT @StartIndex,@PageSize;
+        
+        SELECT 
+          IFNULL(COUNT(1),0)
+        FROM QYPO.PurchaseOrder po 
+        INNER JOIN QYPO.Vendor vendor
+          ON vendor.SysNo = po.VendorSysNo
+        INNER JOIN QYCMS.Product product
+          ON product.SysNo = po.ProductSysNo
+        INNER JOIN QYCustomer.CustomerBasic customer
+            ON customer.SysNo = po.BuyerSysNo
+        WHERE po.BuyerSysNo = @CustomerSysNo
+          AND po.CompanyCode = @CompanyCode
+        #WhereStr#
+        ORDER BY 1 DESC
+      ]]>
+    </CommandText>
+    <Parameters>
+      <Param Name="@CustomerSysNo" DBType="Int32" Size="4" />
+      <Param Name="@CompanyCode" DBType="String" Size="20" />
+    </Parameters>
+  </DataCommand>
+
+  <DataCommand Name="QueryPurchaseProductByConditions" DataSourceID="NorthCenterDB" Type ="TextCommand">
+    <CommandText>
+      <![CDATA[
+        SELECT * FROM(
+          SELECT
+             product.SysNo
+            ,product.ProductName
+            ,IFNULL(product.ProductSpec,"") as Specifications
+            ,IFNULL(product.ProductTitle,"") as ProductOriginPlace
+            ,vendor.SysNo AS VendorSysNo
+            ,vendor.VendorName
+            ,price.CurrentPrice
+            ,product.MinOrderQty
+          FROM QYCMS.Product product
+          INNER JOIN QYPO.Vendor vendor
+            ON vendor.SysNo = product.VendorSysNo
+          INNER JOIN QYCMS.SubStoreProduct price
+            ON product.SysNo = price.ProductSysNo AND price.SubStoreCode = 'sh'
+          WHERE @CompanyCode = product.CompanyCode
+            AND product.Status IN(2,4)
+          #WhereStr#
+          ORDER BY 1 DESC
+        ) AS QueryResult LIMIT @StartIndex,@PageSize;
+        
+        SELECT
+          IFNULL(COUNT(1),0)
+        FROM QYCMS.Product product
+        INNER JOIN QYPO.Vendor vendor
+          ON vendor.SysNo = product.VendorSysNo
+        INNER JOIN QYCMS.Product_Price price
+          ON product.SysNo = price.ProductSysNo
+        WHERE @CompanyCode = product.CompanyCode
+        AND product.Status IN(2,4)
+        #WhereStr#
+        ORDER BY 1 DESC
+      ]]>
+    </CommandText>
+    <Parameters>
+      <Param Name="@CompanyCode" DBType="String" Size="20" />
+    </Parameters>
+  </DataCommand>
+  
+
+  <DataCommand Name="Dashboard.AuthenticateUser" DataSourceID="NorthCenterDB" Type ="TextCommand">
+    <CommandText>
+      <![CDATA[
+        SELECT COUNT(1)
+        FROM [ChmPeople].[dbo].[INDIVIDUAL] WITH(NOLOCK)
+        WHERE CHURCH_ID = @ChurchID AND Individual_Name = @Name
+      ]]>
+    </CommandText>
+    <Parameters>
+      <Param Name="@ChurchID" DBType="Int32" Size="4" />
+      <Param Name="@Name" DBType="String" Size="50" />
+      <Param Name="@Password" DBType="String" Size="50" />
+    </Parameters>
+  </DataCommand>
+  
+</DataOperators>

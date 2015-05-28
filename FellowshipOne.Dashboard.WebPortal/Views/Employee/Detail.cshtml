@@ -1,0 +1,43 @@
+﻿@{
+    Layout = null;
+    var employee = ViewBag.Employee as Dashboard.DataService.Models.Employee;
+}
+
+<h2>Employee Detail.</h2>
+<h4>Create, Edit the employee information.</h4>
+<hr />
+<div id="divMessage" class="form-group" style="display:none">
+    <div class="alert alert-warning col-md-offset-1 col-md-10 ">
+        @*<a href="#" class="close" data-dismiss="alert">&times;</a>*@
+        <strong>Error:</strong><span><ul id="ulText"></ul></span>
+    </div>
+</div>
+<div class="form-group">
+    <input type="hidden" value="@employee.SysNo" id="hidSysNo" />
+    <label for="Code" class="col-md-2 control-label">Code</label>
+    <div class="col-md-4">
+        <input type="text" value="@employee.Code" name="Code" id="txtCode" class="form-control">
+    </div>
+    <label for="UserName" class="col-md-2 control-label">Name</label>
+    <div class="col-md-4">
+        <input type="text" value="@employee.Name" name="Name" id="txtName" class="form-control">
+    </div>
+</div>
+<div class="form-group">
+    <label for="Type" class="col-md-2 control-label">Type</label>
+    <div class="col-md-4">
+        <input type="text" value="@employee.Type" name="Type" id="txtType" class="form-control">
+    </div>
+    <label for="Age" class="col-md-2 control-label">Age</label>
+    <div class="col-md-4">
+        <input type="text" value='@(employee.Age > 0 ? employee.Age.ToString() : string.Empty)' name="Age" id="txtAge" class="form-control">
+    </div>
+</div>
+
+<div class="form-group">
+    <div class="col-md-offset-8 col-md-4">
+        <input type="button" value="+ Create" id="btnCreate" class="btn btn-primary" />
+        <input type="button" value="# Save" id="btnSave" class="btn btn-success" style="display:none" />
+        <input type="button" value="Cancal" id="btnCancal" class="btn btn-default" style="display:none" />
+    </div>
+</div>

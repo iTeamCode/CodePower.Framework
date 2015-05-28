@@ -1,0 +1,105 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "00.Framework", "00.Framework", "{C61C6E32-4892-4A94-AF03-E7CD3A9FEEAF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01.WebPortal", "01.WebPortal", "{ACBF217B-2BD4-4024-9C5D-4DD3ECBD7E78}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "06.AutoTesting", "06.AutoTesting", "{20C6EB37-553B-4525-9CD5-E657D1EFDCC0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "04.DataLayer", "04.DataLayer", "{F63BC442-14FB-4279-A1E6-98C5DF87537F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{D0F81F33-C39F-4F01-BFB0-85B7FDB5C30C}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\packages.config = .nuget\packages.config
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02.BizLayer", "02.BizLayer", "{AA241DD5-4BAE-4AC9-BA7B-FC05EF36FE2D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "03.ServiceLayer", "03.ServiceLayer", "{F56A497C-C24E-4145-ACE5-EB7FE1B884E3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FellowshipOne.Framework.AOP", "FellowshipOne.Framework\FellowshipOne.Framework.AOP\FellowshipOne.Framework.AOP.csproj", "{CCCB0994-56E6-479D-8940-4DD5773E7446}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FellowshipOne.Framework.DataAccess", "FellowshipOne.Framework\FellowshipOne.Framework.DataAccess\FellowshipOne.Framework.DataAccess.csproj", "{E5992C2A-FE50-4EE3-959C-25638DD9A3C9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FellowshipOne.Framework.Web", "FellowshipOne.Framework\FellowshipOne.Framework.Web\FellowshipOne.Framework.Web.csproj", "{BE236063-BA72-4C83-B6A8-58371C902A0F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FellowshipOne.Dashboard.WebPortal", "FellowshipOne.Dashboard.WebPortal\FellowshipOne.Dashboard.WebPortal.csproj", "{1895F304-3AA2-4213-99D8-8A75E7E48578}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FellowshipOne.Dashboard.BizFacade", "FellowshipOne.Dashboard.BizFacade\FellowshipOne.Dashboard.BizFacade.csproj", "{99080A69-7B70-48F5-9DEE-54F89FCDCCA4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FellowshipOne.Dashboard.ApiBizLogic", "FellowshipOne.Dashboard.ApiBizLogic\FellowshipOne.Dashboard.ApiBizLogic.csproj", "{A0F9A56D-7B1B-4189-AA17-83E2096A8774}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FellowshipOne.Dashboard.ApiService", "FellowshipOne.Dashboard.ApiService\FellowshipOne.Dashboard.ApiService.csproj", "{B95EB181-75B5-45EF-9C2A-0E733098B57E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FellowshipOne.Dashboard.DataAccess", "FellowshipOne.Dashboard.DataAccess\FellowshipOne.Dashboard.DataAccess.csproj", "{4F4B8153-4F05-4112-B82A-6E9168A56736}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FellowshipOne.Dashboard.XUnitTest", "FellowshipOne.Dashboard.XUnitTest\FellowshipOne.Dashboard.XUnitTest.csproj", "{10790446-C9E7-451C-918A-6CAB1668E72B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dashboard.DataService", "Dashboard.DataService\Dashboard.DataService.csproj", "{2E4339DB-8EE6-4D75-BCB3-DFE3B30F1E43}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CCCB0994-56E6-479D-8940-4DD5773E7446}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CCCB0994-56E6-479D-8940-4DD5773E7446}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CCCB0994-56E6-479D-8940-4DD5773E7446}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CCCB0994-56E6-479D-8940-4DD5773E7446}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E5992C2A-FE50-4EE3-959C-25638DD9A3C9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E5992C2A-FE50-4EE3-959C-25638DD9A3C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E5992C2A-FE50-4EE3-959C-25638DD9A3C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E5992C2A-FE50-4EE3-959C-25638DD9A3C9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BE236063-BA72-4C83-B6A8-58371C902A0F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BE236063-BA72-4C83-B6A8-58371C902A0F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BE236063-BA72-4C83-B6A8-58371C902A0F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BE236063-BA72-4C83-B6A8-58371C902A0F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1895F304-3AA2-4213-99D8-8A75E7E48578}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1895F304-3AA2-4213-99D8-8A75E7E48578}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1895F304-3AA2-4213-99D8-8A75E7E48578}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1895F304-3AA2-4213-99D8-8A75E7E48578}.Release|Any CPU.Build.0 = Release|Any CPU
+		{99080A69-7B70-48F5-9DEE-54F89FCDCCA4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{99080A69-7B70-48F5-9DEE-54F89FCDCCA4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{99080A69-7B70-48F5-9DEE-54F89FCDCCA4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{99080A69-7B70-48F5-9DEE-54F89FCDCCA4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A0F9A56D-7B1B-4189-AA17-83E2096A8774}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A0F9A56D-7B1B-4189-AA17-83E2096A8774}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A0F9A56D-7B1B-4189-AA17-83E2096A8774}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A0F9A56D-7B1B-4189-AA17-83E2096A8774}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B95EB181-75B5-45EF-9C2A-0E733098B57E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B95EB181-75B5-45EF-9C2A-0E733098B57E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B95EB181-75B5-45EF-9C2A-0E733098B57E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B95EB181-75B5-45EF-9C2A-0E733098B57E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4F4B8153-4F05-4112-B82A-6E9168A56736}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4F4B8153-4F05-4112-B82A-6E9168A56736}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4F4B8153-4F05-4112-B82A-6E9168A56736}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4F4B8153-4F05-4112-B82A-6E9168A56736}.Release|Any CPU.Build.0 = Release|Any CPU
+		{10790446-C9E7-451C-918A-6CAB1668E72B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{10790446-C9E7-451C-918A-6CAB1668E72B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{10790446-C9E7-451C-918A-6CAB1668E72B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{10790446-C9E7-451C-918A-6CAB1668E72B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2E4339DB-8EE6-4D75-BCB3-DFE3B30F1E43}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2E4339DB-8EE6-4D75-BCB3-DFE3B30F1E43}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2E4339DB-8EE6-4D75-BCB3-DFE3B30F1E43}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2E4339DB-8EE6-4D75-BCB3-DFE3B30F1E43}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{CCCB0994-56E6-479D-8940-4DD5773E7446} = {C61C6E32-4892-4A94-AF03-E7CD3A9FEEAF}
+		{E5992C2A-FE50-4EE3-959C-25638DD9A3C9} = {C61C6E32-4892-4A94-AF03-E7CD3A9FEEAF}
+		{BE236063-BA72-4C83-B6A8-58371C902A0F} = {C61C6E32-4892-4A94-AF03-E7CD3A9FEEAF}
+		{1895F304-3AA2-4213-99D8-8A75E7E48578} = {ACBF217B-2BD4-4024-9C5D-4DD3ECBD7E78}
+		{2E4339DB-8EE6-4D75-BCB3-DFE3B30F1E43} = {ACBF217B-2BD4-4024-9C5D-4DD3ECBD7E78}
+		{10790446-C9E7-451C-918A-6CAB1668E72B} = {20C6EB37-553B-4525-9CD5-E657D1EFDCC0}
+		{4F4B8153-4F05-4112-B82A-6E9168A56736} = {F63BC442-14FB-4279-A1E6-98C5DF87537F}
+		{99080A69-7B70-48F5-9DEE-54F89FCDCCA4} = {AA241DD5-4BAE-4AC9-BA7B-FC05EF36FE2D}
+		{A0F9A56D-7B1B-4189-AA17-83E2096A8774} = {F56A497C-C24E-4145-ACE5-EB7FE1B884E3}
+		{B95EB181-75B5-45EF-9C2A-0E733098B57E} = {F56A497C-C24E-4145-ACE5-EB7FE1B884E3}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<root>
+  <RequestGroup id="TempGroup" basicPath="http://localhost:53245/api">
+    <item id="User_SignIn" type="post" url="User/SignIn"/>
+    <item id="User_SignOut" type="post" url="User/SignOut"/>
+  </RequestGroup>
+</root>
